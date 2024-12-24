@@ -1,29 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: daxferna <daxferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/26 18:53:08 by daxferna          #+#    #+#             */
-/*   Updated: 2024/12/24 17:13:33 by daxferna         ###   ########.fr       */
+/*   Created: 2024/03/20 12:42:58 by daxferab          #+#    #+#             */
+/*   Updated: 2024/12/24 17:37:00 by daxferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dest, const char *src, size_t size)
+void	*ft_calloc(size_t count, size_t size)
 {
-	size_t	i;
+	void	*p;
+	size_t	total;
+
+	total = count * size;
+	p = malloc(total);
+	if (!p)
+		return (NULL);
+	while (total--)
+		((unsigned char *)p)[total] = 0;
+	return (p);
+}
+
+int	ft_findnl(char *str)
+{
+	int	i;
 
 	i = 0;
-	if (size == 0)
-		return (ft_strlen(src));
-	while (i + 1 < size && src[i] != 0)
+	if (!str)
+		return (0);
+	while (str[i])
 	{
-		dest[i] = src[i];
+		if (str[i] == '\n')
+			return (1);
 		i++;
 	}
-	dest[i] = 0;
-	return (ft_strlen(src));
+	return (0);
 }
