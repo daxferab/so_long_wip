@@ -6,7 +6,7 @@
 /*   By: daxferna <daxferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 22:16:45 by daxferna          #+#    #+#             */
-/*   Updated: 2024/12/24 16:57:11 by daxferna         ###   ########.fr       */
+/*   Updated: 2024/12/25 19:14:47 by daxferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,18 @@
 
 bool	is_map_valid(char	*arg)
 {
+	int		fd;
+	char	**map;
+
+	fd = open(arg, O_RDONLY);
+	if (fd < 0)
+		return (false);
+	map = map_to_matrix(fd);
+	close(fd);
+	if (!map)
+		return (false);
+	if (!is_map_closed(map) || !is_map_solvable(map))
+		return (false);
 	return(true);
 }
 
