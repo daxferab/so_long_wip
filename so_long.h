@@ -6,7 +6,7 @@
 /*   By: daxferna <daxferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 21:39:03 by daxferna          #+#    #+#             */
-/*   Updated: 2024/12/26 01:07:47 by daxferna         ###   ########.fr       */
+/*   Updated: 2024/12/26 03:25:00 by daxferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,13 @@ void	error(int errno);
 void	free_map(char **map);
 
 // map_validation.c
-char	**map_to_matrix(int fd);
+bool	map_to_matrix(int fd, char **map, char *arg);
+bool	is_map_rectangular(char **map);
 bool	is_map_closed(char **map);
 bool	is_map_solvable(char **map);
+
+// utils.c
+int		malloc_map_lines(int fd, char **map);
 
 // validation.c
 bool	is_map_valid(char	*arg);
