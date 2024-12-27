@@ -6,7 +6,7 @@
 /*   By: daxferna <daxferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 18:10:16 by daxferna          #+#    #+#             */
-/*   Updated: 2024/12/24 17:32:06 by daxferna         ###   ########.fr       */
+/*   Updated: 2024/12/27 04:04:23 by daxferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ char			*get_next_line(int fd);
 int				ft_findnl(char *str);
 char			*ft_getline(char *str);
 char			*ft_updatestatic(char *str);
-void			*ft_calloc(size_t count, size_t size);
+void			*ft_calloc_gnl(size_t count, size_t size);
 char			*ft_read(int fd, char *remainder, char *buffer);
 
 

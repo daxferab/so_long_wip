@@ -6,38 +6,34 @@
 /*   By: daxferna <daxferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 18:17:07 by daxferna          #+#    #+#             */
-/*   Updated: 2024/12/26 04:01:56 by daxferna         ###   ########.fr       */
+/*   Updated: 2024/12/27 04:39:32 by daxferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-bool	map_to_matrix(int fd, char **map, char *arg)
+bool	map_to_matrix(int fd, char ***map, int map_lines)
 {
 	char	*line;
 	int		i;
-	int		map_lines;
+	int		line_len;
 
+	*map = malloc((sizeof(char *) * (map_lines + 1)));
+	if (!*map)
+		return (false);
 	i = 0;
-
-	map_lines = malloc_map_lines(fd, map);
-	if (!map || map_lines < 3)
-		return (free(map), false);
-	fd = open(arg, O_RDONLY);
-	while (i < map_lines)
+	line = get_next_line(fd);
+	while (line)
 	{
-		line = get_next_line(fd);
-		if (!line)
-			return (close(fd), free_map(map), false);
-		map[i] = malloc(ft_strlen(line) + 1);
-		if (!map[i])
-			return (close(fd), free_map(map), free(line), false);
-		ft_strlcpy(map[i], line, ft_strlen(line) + 1);
+		line_len = ft_strlen(line);
+		(*map)[i] = malloc(line_len + 1);
+		if (!(*map)[i])
+			return (free_map(*map), free(line), false);
+		ft_strlcpy((*map)[i++], line, line_len + 1);
 		free(line);
-		i++;
+		line = get_next_line(fd);
 	}
-	map[i] = (char *)0;
-	close(fd);
+	(*map)[i] = NULL;
 	return (true);
 }
 
@@ -47,10 +43,15 @@ bool	is_map_rectangular(char **map)
 	int		str_len;
 
 	i = 0;
-	str_len = ft_strlen(map[0]);
+	str_len = ft_strlen(map[i]);
 	while(map[i])
+	{
 		if ((ft_strlen(map[i++]) != str_len) || str_len < 3)
 			return (free_map(map), false);
+	}
+	i++;
+	if (i < 3)
+		return (free_map(map), false);
 	return (true);
 }
 

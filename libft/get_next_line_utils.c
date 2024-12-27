@@ -6,13 +6,13 @@
 /*   By: daxferna <daxferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 12:42:58 by daxferab          #+#    #+#             */
-/*   Updated: 2024/12/24 17:37:00 by daxferna         ###   ########.fr       */
+/*   Updated: 2024/12/27 04:07:30 by daxferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t count, size_t size)
+void	*ft_calloc_gnl(size_t count, size_t size)
 {
 	void	*p;
 	size_t	total;
@@ -28,16 +28,13 @@ void	*ft_calloc(size_t count, size_t size)
 
 int	ft_findnl(char *str)
 {
-	int	i;
-
-	i = 0;
 	if (!str)
 		return (0);
-	while (str[i])
+	while (*str)
 	{
-		if (str[i] == '\n')
+		if (*str == '\n')
 			return (1);
-		i++;
+		str++;
 	}
 	return (0);
 }
