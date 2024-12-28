@@ -6,7 +6,7 @@
 /*   By: daxferna <daxferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 01:56:15 by daxferna          #+#    #+#             */
-/*   Updated: 2024/12/28 06:05:35 by daxferna         ###   ########.fr       */
+/*   Updated: 2024/12/28 20:38:33 by daxferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,6 @@ int	count_fd_lines(int fd)
 	return (map_lines);
 }
 
-int	get_map_height(char **map)
-{
-	int	i;
-
-	i = 0;
-	while (map[i])
-		i++;
-	return (i);
-}
-
 bool	is_wall(char *map_line)
 {
 	int	i;
@@ -52,31 +42,52 @@ bool	is_wall(char *map_line)
 	return (true);
 }
 
-bool	has_mandatory_elements(char	**map)
+bool	has_exit_and_player(t_map *game_map)
 {
-	int		i;
-	int		j;
-	int		player;
-	int		exit;
-	bool	collectible;
+	int	i;
+	int	j;
+	int	player;
 
 	i = 0;
+	game_map->exit = 0;
 	player = 0;
-	exit = 0;
-	collectible = false;
-	while (map[i])
+	while (game_map->map[i])
 	{
 		j = 0;
-		while (map[i][j++])
+		while (game_map->map[i][j])
 		{
-			if (map[i][j - 1] == PLAYER)
+			if (game_map->map[i][j] == PLAYER)
+			{
+				game_map->player_x = j;
+				game_map->player_y = i;
 				player++;
-			if (map[i][j - 1] == EXIT)
-				exit++;
-			if (map[i][j - 1] == COLLECTIBLE)
-				collectible = true;
+			}
+			if (game_map->map[i][j] == EXIT)
+				game_map->exit++;
+			j++;
 		}
 		i++;
 	}
-	return (player == 1 && exit == 1 && collectible);
+	return (player == 1 && game_map->exit == 1);
+}
+
+bool	has_collectibles(t_map *game_map)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	game_map->collectibles = 0;
+	while (game_map->map[i])
+	{
+		j = 0;
+		while (game_map->map[i][j])
+		{
+			if (game_map->map[i][j] == COLLECTIBLE)
+				game_map->collectibles++;
+			j++;
+		}
+		i++;
+	}
+	return (game_map->collectibles > 0);
 }
