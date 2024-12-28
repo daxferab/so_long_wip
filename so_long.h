@@ -6,7 +6,7 @@
 /*   By: daxferna <daxferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 21:39:03 by daxferna          #+#    #+#             */
-/*   Updated: 2024/12/28 20:15:37 by daxferna         ###   ########.fr       */
+/*   Updated: 2024/12/28 21:34:39 by daxferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,16 +43,20 @@ void	error(int errno);
 void	free_map(char **map);
 
 // map_utils.c
-int		count_fd_lines(int fd);
 bool	is_wall(char *map_line);
 bool	has_exit_and_player(t_map *game_map);
 bool	has_collectibles(t_map *game_map);
+bool	has_only_valid_chars(t_map *game_map);
+bool	is_valid_char(char c);
 
-// map_validation.c
-bool	map_to_matrix(int fd, t_map *game_map);
+//map_utils2.c
+int		count_fd_lines(int fd);
 bool	is_map_rectangular(t_map *game_map);
 bool	is_map_closed(t_map *game_map);
 bool	is_map_solvable(t_map *game_map);
+
+// map_validation.c
+bool	map_to_matrix(int fd, t_map *game_map);
 bool	is_map_valid(char	*arg, t_map *game_map);
 
 #endif

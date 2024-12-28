@@ -6,26 +6,16 @@
 /*   By: daxferna <daxferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 01:56:15 by daxferna          #+#    #+#             */
-/*   Updated: 2024/12/28 20:38:33 by daxferna         ###   ########.fr       */
+/*   Updated: 2024/12/28 21:38:29 by daxferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-int	count_fd_lines(int fd)
+bool	is_valid_char(char c)
 {
-	char	*line;
-	int		map_lines;
-
-	map_lines = 0;
-	line = get_next_line(fd);
-	while (line)
-	{
-		free(line);
-		map_lines++;
-		line = get_next_line(fd);
-	}
-	return (map_lines);
+	return (c == WALL || c == FLOOR || c == PLAYER
+	|| c == COLLECTIBLE || c == EXIT || c == '\n');
 }
 
 bool	is_wall(char *map_line)
@@ -90,4 +80,24 @@ bool	has_collectibles(t_map *game_map)
 		i++;
 	}
 	return (game_map->collectibles > 0);
+}
+
+bool	has_only_valid_chars(t_map *game_map)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (game_map->map[i])
+	{
+		j = 0;
+		while (game_map->map[i][j])
+		{
+			if (!is_valid_char(game_map->map[i][j]))
+				return (false);
+			j++;
+		}
+		i++;
+	}
+	return (true);
 }
