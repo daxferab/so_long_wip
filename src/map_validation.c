@@ -6,7 +6,7 @@
 /*   By: daxferna <daxferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 18:17:07 by daxferna          #+#    #+#             */
-/*   Updated: 2024/12/27 04:39:32 by daxferna         ###   ########.fr       */
+/*   Updated: 2024/12/28 05:38:46 by daxferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,27 @@ bool	is_map_rectangular(char **map)
 
 bool	is_map_closed(char **map)
 {
+	int		width;
+	int		height;
+	int		i;
+
+	width = ft_strlen(map[0]) - 1;
+	height = get_map_height(map);
+	i = 0;
+	if (!is_wall(map[0]) || !is_wall(map[height - 1]))
+		return (false);
+	while (map[i])
+	{
+		if (map[i][0] != WALL || map[i][width - 1] != WALL)
+			return (false);
+		i++;
+	}
 	return (true);
 }
 
 bool	is_map_solvable(char **map)
 {
+	if (!has_mandatory_elements(map))
+		return (false);
 	return (true);
 }

@@ -6,7 +6,7 @@
 /*   By: daxferna <daxferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 21:39:03 by daxferna          #+#    #+#             */
-/*   Updated: 2024/12/27 03:54:00 by daxferna         ###   ########.fr       */
+/*   Updated: 2024/12/28 05:38:21 by daxferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,11 @@
 # include "libft/libft.h"
 # include <stdbool.h>
 # include <stdlib.h>
+# define WALL '1'
+# define FLOOR '0'
+# define PLAYER 'P'
+# define COLLECTIBLE 'C'
+# define EXIT 'E'
 
 // errors.c
 void	error(int errno);
@@ -28,8 +33,11 @@ bool	is_map_rectangular(char **map);
 bool	is_map_closed(char **map);
 bool	is_map_solvable(char **map);
 
-// utils.c
+// map_utils.c
 int		count_fd_lines(int fd);
+int		get_map_height(char **map);
+bool	is_wall(char *map_line);
+bool	has_mandatory_elements(char	**map);
 
 // validation.c
 bool	is_map_valid(char	*arg, char	***map);
