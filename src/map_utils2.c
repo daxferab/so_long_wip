@@ -6,7 +6,7 @@
 /*   By: daxferna <daxferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 21:17:40 by daxferna          #+#    #+#             */
-/*   Updated: 2024/12/28 21:37:40 by daxferna         ###   ########.fr       */
+/*   Updated: 2024/12/29 20:12:01 by daxferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,13 +62,24 @@ bool	is_map_closed(t_map *game_map)
 	return (true);
 }
 
+bool	all_chars_connected(t_map	*game_map)
+{
+	return (true);
+}
+
 bool	is_map_solvable(t_map *game_map)
 {
+	if (!is_map_rectangular(game_map))
+		return (false);
+	if (!is_map_closed(game_map))
+		return (false);
 	if (!has_only_valid_chars(game_map))
 		return (false);
 	if (!has_exit_and_player(game_map))
 		return (false);
 	if (!has_collectibles(game_map))
+		return (false);
+	if (!all_chars_connected(game_map))
 		return (false);
 	return (true);
 }

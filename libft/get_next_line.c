@@ -6,7 +6,7 @@
 /*   By: daxferna <daxferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 12:43:01 by daxferab          #+#    #+#             */
-/*   Updated: 2024/12/28 20:48:21 by daxferna         ###   ########.fr       */
+/*   Updated: 2024/12/29 20:05:06 by daxferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_getline(char *str)
 	i = 0;
 	while (str[i] != '\n' && str[i] != '\0')
 		i++;
-	line = ft_calloc_gnl(i + 2, sizeof(char));
+	line = ft_calloc(i + 2, sizeof(char));
 	if (!line)
 		return (NULL);
 	i = 0;
@@ -44,7 +44,7 @@ char	*ft_updatestatic(char *str)
 	i = 0;
 	while (str[i] != '\n' && str[i] != '\0')
 		i++;
-	remainder = ft_calloc_gnl((ft_strlen(str) - i + 1), sizeof(char));
+	remainder = ft_calloc((ft_strlen(str) - i + 1), sizeof(char));
 	if (!remainder)
 		return (0);
 	if (str[i] == '\n')
@@ -78,7 +78,7 @@ char	*ft_read(int fd, char *remainder, char *buffer)
 		else if (bytesread <= 0)
 			break ;
 		buffer[bytesread] = '\0';
-		remainder = ft_strjoin(remainder, buffer);
+		remainder = ft_strjoin_gnl(remainder, buffer);
 		if (!remainder)
 			free(buffer);
 	}
@@ -93,11 +93,11 @@ char	*get_next_line(int fd)
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	buffer = ft_calloc_gnl(BUFFER_SIZE + 1, sizeof(char));
+	buffer = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
 	if (!buffer)
 		return (NULL);
 	if (!remainder)
-		remainder = ft_calloc_gnl(BUFFER_SIZE + 1, sizeof(char));
+		remainder = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
 	if (!remainder)
 		return (free(buffer), NULL);
 	remainder = ft_read(fd, remainder, buffer);

@@ -6,7 +6,7 @@
 /*   By: daxferna <daxferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 18:17:07 by daxferna          #+#    #+#             */
-/*   Updated: 2024/12/28 21:36:09 by daxferna         ###   ########.fr       */
+/*   Updated: 2024/12/29 02:38:04 by daxferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,6 @@ bool	is_map_valid(char	*arg, t_map	*game_map)
 	close(fd);
 	if (!game_map->map)
 		return (false);
-	if (!is_map_rectangular(game_map) || !is_map_closed(game_map))
-		return (free_map(game_map->map), false);
 	if (!is_map_solvable(game_map))
 		return (free_map(game_map->map), false);
 	return (true);
