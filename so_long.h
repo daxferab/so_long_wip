@@ -6,7 +6,7 @@
 /*   By: daxferna <daxferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 21:39:03 by daxferna          #+#    #+#             */
-/*   Updated: 2024/12/28 21:34:39 by daxferna         ###   ########.fr       */
+/*   Updated: 2025/01/01 02:38:00 by daxferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,14 @@ bool	is_valid_char(char c);
 
 //map_utils2.c
 int		count_fd_lines(int fd);
+char	**dup_map(t_map game_map);
 bool	is_map_rectangular(t_map *game_map);
 bool	is_map_closed(t_map *game_map);
-bool	is_map_solvable(t_map *game_map);
+void	dfs(char **map, int	pos_x, int pos_y, int *c, int *e);
 
 // map_validation.c
 bool	map_to_matrix(int fd, t_map *game_map);
+bool	is_map_solvable(t_map *game_map);
 bool	is_map_valid(char	*arg, t_map *game_map);
 
 #endif

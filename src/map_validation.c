@@ -6,7 +6,7 @@
 /*   By: daxferna <daxferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 18:17:07 by daxferna          #+#    #+#             */
-/*   Updated: 2024/12/29 02:38:04 by daxferna         ###   ########.fr       */
+/*   Updated: 2025/01/01 02:46:08 by daxferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ bool	map_to_matrix(int fd, t_map *game_map)
 {
 	char	*line;
 	int		i;
-	int		line_len;
 
 	game_map->map = malloc((sizeof(char *) * (game_map->height + 1)));
 	if (!game_map->map)
@@ -25,16 +24,41 @@ bool	map_to_matrix(int fd, t_map *game_map)
 	line = get_next_line(fd);
 	while (line)
 	{
-		line_len = ft_strlen(line);
-		(game_map->map)[i] = malloc(line_len + 1);
+		game_map->map[i] = ft_strdup(line);
 		if (!(game_map->map)[i])
 			return (free_map(game_map->map), free(line), false);
-		ft_strlcpy((game_map->map)[i++], line, line_len + 1);
 		free(line);
 		line = get_next_line(fd);
+		i++;
 	}
 	(game_map->map)[i] = NULL;
-	game_map->width = line_len - 1;
+	game_map->width = ft_strlen(game_map->map[0]) - 1;
+	return (true);
+}
+
+bool	is_map_solvable(t_map *game_map)
+{
+	int		c;
+	int		e;
+	char	**validation_map;
+
+	c = 0;
+	e = 0;
+	if (!is_map_rectangular(game_map))
+		return (false);
+	if (!is_map_closed(game_map))
+		return (false);
+	if (!has_only_valid_chars(game_map))
+		return (false);
+	if (!has_exit_and_player(game_map))
+		return (false);
+	if (!has_collectibles(game_map))
+		return (false);
+	validation_map = dup_map(*game_map);
+	dfs(validation_map, game_map->player_x, game_map->player_y, &c, &e);
+	free_map(validation_map);
+	if (c != game_map->collectibles || e != 1)
+		return (false);
 	return (true);
 }
 
