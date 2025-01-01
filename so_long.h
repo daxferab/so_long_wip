@@ -6,13 +6,13 @@
 /*   By: daxferna <daxferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 21:39:03 by daxferna          #+#    #+#             */
-/*   Updated: 2025/01/01 02:54:21 by daxferna         ###   ########.fr       */
+/*   Updated: 2025/01/01 03:03:13 by daxferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
-# include "libft/libft.h"
+# include "lib/libft/libft.h"
 # include <stdbool.h>
 # include <stdlib.h>
 # define WALL '1'
