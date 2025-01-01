@@ -6,11 +6,11 @@
 /*   By: daxferna <daxferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 22:16:45 by daxferna          #+#    #+#             */
-/*   Updated: 2024/12/29 01:14:37 by daxferna         ###   ########.fr       */
+/*   Updated: 2025/01/01 02:52:07 by daxferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "../../so_long.h"
 
 bool	is_ber_extension(char	*archive)
 {

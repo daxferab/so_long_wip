@@ -6,11 +6,11 @@
 /*   By: daxferna <daxferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 21:17:40 by daxferna          #+#    #+#             */
-/*   Updated: 2025/01/01 02:47:15 by daxferna         ###   ########.fr       */
+/*   Updated: 2025/01/01 02:52:17 by daxferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "../../so_long.h"
 
 int	count_fd_lines(int fd)
 {

@@ -6,11 +6,11 @@
 /*   By: daxferna <daxferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 18:17:07 by daxferna          #+#    #+#             */
-/*   Updated: 2025/01/01 02:46:08 by daxferna         ###   ########.fr       */
+/*   Updated: 2025/01/01 02:52:11 by daxferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "../../so_long.h"
 
 bool	map_to_matrix(int fd, t_map *game_map)
 {

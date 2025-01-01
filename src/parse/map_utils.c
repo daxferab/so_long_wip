@@ -6,11 +6,11 @@
 /*   By: daxferna <daxferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 01:56:15 by daxferna          #+#    #+#             */
-/*   Updated: 2024/12/28 21:38:29 by daxferna         ###   ########.fr       */
+/*   Updated: 2025/01/01 02:52:14 by daxferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "../../so_long.h"
 
 bool	is_valid_char(char c)
 {

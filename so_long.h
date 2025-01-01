@@ -6,7 +6,7 @@
 /*   By: daxferna <daxferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 21:39:03 by daxferna          #+#    #+#             */
-/*   Updated: 2025/01/01 02:38:00 by daxferna         ###   ########.fr       */
+/*   Updated: 2025/01/01 02:54:21 by daxferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,16 @@ typedef struct s_map
 	int		player_y;
 }	t_map;
 
-// arg_validation.c
-bool	is_ber_extension(char	*archive);
-void	validate_arg(char *arg, t_map *game_map);
-
 // errors.c
 void	error(int errno);
 
 // free_map.c
 void	free_map(char **map);
+
+/***************************** PARSE *****************************/
+// arg_validation.c
+bool	is_ber_extension(char	*archive);
+void	validate_arg(char *arg, t_map *game_map);
 
 // map_utils.c
 bool	is_wall(char *map_line);
