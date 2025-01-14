@@ -1,4 +1,11 @@
-# so_long_wip
-This project consists on making a mini game using MiniLibX 
+# So long
+Mini videogame with Codam MLX
+Goal: get the UFO to the portal collecting all the cows.
 
-## Parseo de mapa
+## How to compile
+
+## How to play
+
+- Use the arrows or WASD to move
+- Get all the collectibles (cows)
+- Head to the portal (exit)

@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: daxferna <daxferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/23 22:05:21 by daxferna          #+#    #+#             */
-/*   Updated: 2025/01/14 20:05:26 by daxferna         ###   ########.fr       */
+/*   Created: 2024/01/23 21:32:33 by daxferna          #+#    #+#             */
+/*   Updated: 2025/01/13 22:23:28 by daxferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "../../libft.h"
 
-int	main(int argc, char **argv)
+void	*ft_memcpy(void *dst, const void *src, size_t len)
 {
-	t_map	game_map;
+	char	*start;
 
-	if (argc != 2)
-		error(1);
-	validate_arg(argv[1], &game_map);
-	free_map(game_map.map);
-	return (0);
+	start = dst;
+	while (len-- > 0 && (dst != 0 || src != 0))
+		ft_memset(dst++, *(const char *)src++, 1);
+	return (start);
 }

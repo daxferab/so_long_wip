@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: daxferna <daxferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/23 22:05:21 by daxferna          #+#    #+#             */
-/*   Updated: 2025/01/14 20:05:26 by daxferna         ###   ########.fr       */
+/*   Created: 2024/01/26 18:53:08 by daxferna          #+#    #+#             */
+/*   Updated: 2025/01/13 22:23:28 by daxferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "../../libft.h"
 
-int	main(int argc, char **argv)
+size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 {
-	t_map	game_map;
+	size_t	i;
 
-	if (argc != 2)
-		error(1);
-	validate_arg(argv[1], &game_map);
-	free_map(game_map.map);
-	return (0);
+	i = 0;
+	if (size == 0)
+		return (ft_strlen(src));
+	while (i + 1 < size && src[i] != 0)
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = 0;
+	return (ft_strlen(src));
 }

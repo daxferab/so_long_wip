@@ -1,24 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: daxferna <daxferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/23 22:05:21 by daxferna          #+#    #+#             */
-/*   Updated: 2025/01/14 20:05:26 by daxferna         ###   ########.fr       */
+/*   Created: 2024/01/10 21:53:08 by daxferna          #+#    #+#             */
+/*   Updated: 2025/01/13 22:23:28 by daxferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "../../libft.h"
 
-int	main(int argc, char **argv)
+int	ft_isalnum(int c)
 {
-	t_map	game_map;
-
-	if (argc != 2)
-		error(1);
-	validate_arg(argv[1], &game_map);
-	free_map(game_map.map);
+	if (ft_isalpha(c) || ft_isdigit(c))
+		return (1);
 	return (0);
 }

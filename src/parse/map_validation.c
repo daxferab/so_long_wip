@@ -6,7 +6,7 @@
 /*   By: daxferna <daxferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 18:17:07 by daxferna          #+#    #+#             */
-/*   Updated: 2025/01/01 02:52:11 by daxferna         ###   ########.fr       */
+/*   Updated: 2025/01/14 20:01:48 by daxferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ bool	is_map_solvable(t_map *game_map)
 bool	is_map_valid(char	*arg, t_map	*game_map)
 {
 	int		fd;
-	int		map_lines;
 
 	fd = open(arg, O_RDONLY);
 	if (fd < 0)

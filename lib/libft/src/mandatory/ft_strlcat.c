@@ -1,24 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: daxferna <daxferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/23 22:05:21 by daxferna          #+#    #+#             */
-/*   Updated: 2025/01/14 20:05:26 by daxferna         ###   ########.fr       */
+/*   Created: 2024/01/29 19:56:37 by daxferna          #+#    #+#             */
+/*   Updated: 2025/01/13 22:23:28 by daxferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "../../libft.h"
 
-int	main(int argc, char **argv)
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	t_map	game_map;
+	size_t	i;
+	size_t	j;
 
-	if (argc != 2)
-		error(1);
-	validate_arg(argv[1], &game_map);
-	free_map(game_map.map);
-	return (0);
+	i = 0;
+	j = 0;
+	while (dst[i] != '\0' && i < dstsize)
+		i++;
+	if (i < dstsize)
+	{
+		while (src[j] != '\0' && i + j < dstsize - 1)
+		{
+			dst[i + j] = src[j];
+			j++;
+		}
+		dst[i + j] = '\0';
+	}
+	return (i + ft_strlen(src));
 }

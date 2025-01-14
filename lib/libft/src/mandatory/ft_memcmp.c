@@ -1,24 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: daxferna <daxferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/23 22:05:21 by daxferna          #+#    #+#             */
-/*   Updated: 2025/01/14 20:05:26 by daxferna         ###   ########.fr       */
+/*   Created: 2024/01/26 18:06:28 by daxferna          #+#    #+#             */
+/*   Updated: 2025/01/13 22:23:28 by daxferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "../../libft.h"
 
-int	main(int argc, char **argv)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	t_map	game_map;
+	size_t			i;
+	unsigned char	*str1;
+	unsigned char	*str2;
 
-	if (argc != 2)
-		error(1);
-	validate_arg(argv[1], &game_map);
-	free_map(game_map.map);
+	str1 = (unsigned char *)s1;
+	str2 = (unsigned char *)s2;
+	i = 0;
+	while (i < n)
+	{
+		if (str1[i] != str2[i])
+			return (str1[i] - str2[i]);
+		i++;
+	}
 	return (0);
 }
