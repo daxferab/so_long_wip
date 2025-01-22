@@ -5,9 +5,12 @@ CFLAGS = -Wall -Werror -Wextra
 LIBFT = lib/libft/libft.a
 LIBMLX = lib/mlx
 MLX = $(LIBMLX)/build/libmlx42.a
-MLXFLAGS = -l glfw -l dl -l m -pthread
+MLXFLAGS = -L $(LIBMLX)/build -l mlx42 -l glfw -l dl -l m -pthread
 
-SRC_FILES = src/parse/arg_validation.c\
+SRC_FILES = src/initialize/draw_map.c\
+			src/initialize/draw_tools.c\
+			src/initialize/init_map.c\
+			src/parse/arg_validation.c\
 			src/parse/map_utils.c\
 			src/parse/map_utils2.c\
 			src/parse/map_validation.c\
@@ -20,7 +23,7 @@ OBJ_FILES = $(SRC_FILES:.c=.o)
 all: $(NAME)
 
 $(NAME): $(LIBFT) $(MLX) $(OBJ_FILES)
-	$(CC) $(CFLAGS) $(MLXFLAGS) -o $(NAME) $(OBJ_FILES) $(LIBFT) $(MLX)
+	$(CC) $(CFLAGS) $(OBJ_FILES) $(MLXFLAGS) -o $(NAME) $(LIBFT) $(MLX)
 
 $(LIBFT):
 	make -C lib/libft
