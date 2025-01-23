@@ -6,7 +6,7 @@
 /*   By: daxferna <daxferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 21:39:03 by daxferna          #+#    #+#             */
-/*   Updated: 2025/01/21 19:50:28 by daxferna         ###   ########.fr       */
+/*   Updated: 2025/01/23 01:49:15 by daxferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,24 +22,16 @@
 # define COLLECTIBLE 'C'
 # define EXIT 'E'
 # define IMGSIZE 128
-// # define WALL_TOP_IMG "textures/walltop.png"
-// # define WALL_BOTTOM_IMG "textures/wallbottom.png"
-// # define WALL_LEFT_IMG "textures/wallleft.png"
-// # define WALL_RIGHT_IMG "textures/wallright.png"
-// # define WALL_CENTER_IMG "textures/wallcenter.png"
-// # define PLAYER_IMG "textures/player.png"
-// # define FLOOR_IMG "textures/wall.png"
-// # define COLLECTIBLE_IMG "textures/collectible.png"
-// # define EXIT_IMG "textures/exit.png"
-# define WALL_TOP_IMG "textures/prueba2.png"
-# define WALL_BOTTOM_IMG "textures/prueba2.png"
-# define WALL_LEFT_IMG "textures/prueba2.png"
-# define WALL_RIGHT_IMG "textures/prueba2.png"
-# define WALL_CENTER_IMG "textures/prueba2.png"
-# define PLAYER_IMG "textures/prueba2.png"
-# define FLOOR_IMG "textures/prueba2.png"
-# define COLLECTIBLE_IMG "textures/prueba2.png"
-# define EXIT_IMG "textures/prueba2.png"
+# define CLOSED_EXIT_IMG "textures/closedExit.png"
+# define COLLECTIBLE_IMG "textures/collectible.png"
+# define FLOOR_IMG "textures/floor.png"
+# define OPEN_EXIT_IMG "textures/openExit.png"
+# define PLAYER_IMG "textures/player.png"
+# define WALL_BOTTOM_IMG "textures/wallBottom.png"
+# define WALL_CENTER_IMG "textures/wallCenter.png"
+# define WALL_RIGHT_IMG "textures/wallRight.png"
+# define WALL_TOP_IMG "textures/wallTop.png"
+# define WALL_LEFT_IMG "textures/wallLeft.png"
 
 typedef struct s_map
 {

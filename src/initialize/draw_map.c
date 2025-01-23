@@ -6,7 +6,7 @@
 /*   By: daxferna <daxferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 21:10:03 by daxferna          #+#    #+#             */
-/*   Updated: 2025/01/21 22:39:00 by daxferna         ###   ########.fr       */
+/*   Updated: 2025/01/23 02:35:30 by daxferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ void	draw_floor(mlx_t *window, int width, int height)
 	int j;
 
 	i = 0;
-	while (i < width)
+	while (i < height)
 	{
 		j = 0;
-		while (j < height)
+		while (j < width)
 		{
 			put_tile(FLOOR_IMG, window, i, j);
 			j++;
@@ -36,10 +36,10 @@ void	draw_walls(mlx_t *window, t_map game_map)
 	int j;
 
 	i = 0;
-	while (i < game_map.width)
+	while (i < game_map.height)
 	{
 		j = 0;
-		while (j < game_map.height)
+		while (j < game_map.width)
 		{
 			if (game_map.map[i][j] == WALL)
 				which_fence(window, game_map, i, j);
@@ -55,17 +55,17 @@ void	draw_other_tiles(mlx_t *window, t_map game_map)
 	int j;
 
 	i = 0;
-	while (i < game_map.width)
+	while (i < game_map.height)
 	{
 		j = 0;
-		while (j < game_map.height)
+		while (j < game_map.width)
 		{
 			if (game_map.map[i][j] == PLAYER)
 				put_tile(PLAYER_IMG, window, i, j);
 			else if (game_map.map[i][j] == COLLECTIBLE)
 				put_tile(COLLECTIBLE_IMG, window, i, j);
 			else if (game_map.map[i][j] == EXIT)
-				put_tile(EXIT_IMG, window, i, j);
+				put_tile(CLOSED_EXIT_IMG, window, i, j);
 			j++;
 		}
 		i++;
@@ -75,6 +75,6 @@ void	draw_other_tiles(mlx_t *window, t_map game_map)
 void	draw_map(mlx_t *window, t_map game_map)
 {
 	draw_floor(window, game_map.width, game_map.height);
-	//draw_walls(window, game_map);
-	//draw_other_tiles(window, game_map);
+	draw_walls(window, game_map);
+	draw_other_tiles(window, game_map);
 }
