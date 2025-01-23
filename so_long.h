@@ -6,7 +6,7 @@
 /*   By: daxferna <daxferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 21:39:03 by daxferna          #+#    #+#             */
-/*   Updated: 2025/01/23 01:49:15 by daxferna         ###   ########.fr       */
+/*   Updated: 2025/01/23 16:28:20 by daxferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,11 +77,13 @@ bool	is_map_valid(char	*arg, t_map *game_map);
 /*************************** INITIALIZE **************************/
 // draw_tools.c
 void	put_tile(char *path, mlx_t *window, int row, int col);
-void	put_border(mlx_t *window, int width, int height, int row, int col);
+bool	is_corner(int row, int col, t_map game_map);
+void	put_corner(mlx_t *window, t_map game_map, int row, int col);
+void	put_border(mlx_t *window, t_map game_map, int row, int col);
 void	which_fence(mlx_t *window, t_map game_map, int i, int j);
 
 // draw_map.c
-void	draw_floor(mlx_t *window, int width, int height);
+void	draw_floor(mlx_t *window, t_map game_map);
 void	draw_walls(mlx_t *window, t_map game_map);
 void	draw_other_tiles(mlx_t *window, t_map game_map);
 void	draw_map(mlx_t *window, t_map game_map);
