@@ -6,7 +6,7 @@
 /*   By: daxferna <daxferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 21:39:03 by daxferna          #+#    #+#             */
-/*   Updated: 2025/01/23 16:28:20 by daxferna         ###   ########.fr       */
+/*   Updated: 2025/01/31 01:12:31 by daxferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # define EXIT 'E'
 # define IMGSIZE 128
 # define CLOSED_EXIT_IMG "textures/closedExit.png"
-# define COLLECTIBLE_IMG "textures/collectible.png"
+# define COLLECT_IMG "textures/collectible.png"
 # define FLOOR_IMG "textures/floor.png"
 # define OPEN_EXIT_IMG "textures/openExit.png"
 # define PLAYER_IMG "textures/player.png"
@@ -35,60 +35,69 @@
 
 typedef struct s_map
 {
-	char	**map;
-	int		height;
-	int		width;
-	int		collectibles;
-	int		exit;
-	int		player_x;
-	int		player_y;
+	char		**map;
+	int			height;
+	int			width;
+	int			num_collectibles;
+	int			exit;
+	int			player_x;
+	int			player_y;
+	mlx_image_t	*player;
+	mlx_image_t *collectibles;
+	mlx_t		*window;
 }	t_map;
 
 // errors.c
-void	error(int errno);
+void		error(int errno);
 
 // free_map.c
-void	free_map(char **map);
+void		free_map(char **map);
+
+/****************************** HOOK *****************************/
+// key_hook.c
+void		move_player(t_map *game, int key);
+void		key_hook(mlx_key_data_t keydata, void *param);
+
+// loop_hook.c
+void		loop_hook(void *param);
 
 /***************************** PARSE *****************************/
 // arg_validation.c
-bool	is_ber_extension(char	*archive);
-void	validate_arg(char *arg, t_map *game_map);
+bool		is_ber_extension(char	*archive);
+void		validate_arg(char *arg, t_map *game);
 
 // map_utils.c
-bool	is_wall(char *map_line);
-bool	has_exit_and_player(t_map *game_map);
-bool	has_collectibles(t_map *game_map);
-bool	has_only_valid_chars(t_map *game_map);
-bool	is_valid_char(char c);
+bool		is_wall(char *map_line);
+bool		has_exit_and_player(t_map *game);
+bool		has_collectibles(t_map *game);
+bool		has_only_valid_chars(t_map *game);
+bool		is_valid_char(char c);
 
 //map_utils2.c
-int		count_fd_lines(int fd);
-char	**dup_map(t_map game_map);
-bool	is_map_rectangular(t_map *game_map);
-bool	is_map_closed(t_map *game_map);
-void	dfs(char **map, int	pos_x, int pos_y, int *c, int *e);
+int			count_fd_lines(int fd);
+char		**dup_map(t_map game);
+bool		is_map_rectangular(t_map *game);
+bool		is_map_closed(t_map *game);
+void		dfs(char **map, int	pos_x, int pos_y, int *c, int *e);
 
 // map_validation.c
-bool	map_to_matrix(int fd, t_map *game_map);
-bool	is_map_solvable(t_map *game_map);
-bool	is_map_valid(char	*arg, t_map *game_map);
+bool		map_to_matrix(int fd, t_map *game);
+bool		is_map_solvable(t_map *game);
+bool		is_map_valid(char	*arg, t_map *game);
 
 /*************************** INITIALIZE **************************/
 // draw_tools.c
-void	put_tile(char *path, mlx_t *window, int row, int col);
-bool	is_corner(int row, int col, t_map game_map);
-void	put_corner(mlx_t *window, t_map game_map, int row, int col);
-void	put_border(mlx_t *window, t_map game_map, int row, int col);
-void	which_fence(mlx_t *window, t_map game_map, int i, int j);
+mlx_image_t	*put_tile(char *path, mlx_t *window, int row, int col, int depth);
+bool		has_wall_near(t_map game, int row, int col);
+void		which_fence(mlx_t *window, t_map game, int i, int j);
 
 // draw_map.c
-void	draw_floor(mlx_t *window, t_map game_map);
-void	draw_walls(mlx_t *window, t_map game_map);
-void	draw_other_tiles(mlx_t *window, t_map game_map);
-void	draw_map(mlx_t *window, t_map game_map);
+void		draw_floor(t_map game);
+void		draw_walls(t_map game);
+void		draw_other_tiles(t_map *game);
+void		draw_map(t_map *game);
 
 // init_map.c
-mlx_t	*init_map(t_map game_map);
+void		init_map(t_map *game);
 
 #endif

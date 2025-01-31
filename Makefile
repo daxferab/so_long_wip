@@ -7,7 +7,9 @@ LIBMLX = lib/mlx
 MLX = $(LIBMLX)/build/libmlx42.a
 MLXFLAGS = -L $(LIBMLX)/build -l mlx42 -l glfw -l dl -l m -pthread
 
-SRC_FILES = src/initialize/draw_map.c\
+SRC_FILES = src/hook/key_hook.c\
+			src/hook/loop_hook.c\
+			src/initialize/draw_map.c\
 			src/initialize/draw_tools.c\
 			src/initialize/init_map.c\
 			src/parse/arg_validation.c\
@@ -41,5 +43,8 @@ fclean:
 	rm -rf $(NAME) $(OBJ_FILES) $(LIBMLX)/build
 
 re: fclean all
+
+run: all
+	./$(NAME) maptry.ber
 
 .PHONY: all clean fclean re

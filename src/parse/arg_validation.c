@@ -6,7 +6,7 @@
 /*   By: daxferna <daxferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 22:16:45 by daxferna          #+#    #+#             */
-/*   Updated: 2025/01/20 19:02:01 by daxferna         ###   ########.fr       */
+/*   Updated: 2025/01/31 00:59:00 by daxferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ bool	is_ber_extension(char	*archive)
 	return (true);
 }
 
-void	validate_arg(char	*arg, t_map	*game_map)
+void	validate_arg(char	*arg, t_map	*game)
 {
 	if (!is_ber_extension(arg))
 		error(2);
-	if (!is_map_valid(arg, game_map))
+	if (!is_map_valid(arg, game))
 		error(3);
 }

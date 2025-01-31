@@ -1,28 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   loop_hook.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: daxferna <daxferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/23 22:05:21 by daxferna          #+#    #+#             */
-/*   Updated: 2025/01/31 01:24:35 by daxferna         ###   ########.fr       */
+/*   Created: 2025/01/31 00:11:35 by daxferna          #+#    #+#             */
+/*   Updated: 2025/01/31 01:23:55 by daxferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "../../so_long.h"
 
-int	main(int argc, char **argv)
+void	loop_hook(void *param)
 {
-	t_map	game;
+	t_map	*game;
 
-	if (argc != 2)
-		error(1);
-	validate_arg(argv[1], &game);
-	init_map(&game);
-	mlx_key_hook(game.window, &key_hook, &game);
-	mlx_loop_hook(game.window, &loop_hook, &game);
-	mlx_loop(game.window);
-	free_map(game.map);
-	return (0);
+	game = (t_map *)param;
+	if (game->map[game->player_y][game->player_x] == COLLECTIBLE)
+		put_tile(FLOOR_IMG, game->window, game->player_y, game->player_x, 6);
 }

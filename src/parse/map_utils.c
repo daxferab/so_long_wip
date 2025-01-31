@@ -6,7 +6,7 @@
 /*   By: daxferna <daxferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 01:56:15 by daxferna          #+#    #+#             */
-/*   Updated: 2025/01/01 02:52:14 by daxferna         ###   ########.fr       */
+/*   Updated: 2025/01/31 00:59:00 by daxferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,68 +32,68 @@ bool	is_wall(char *map_line)
 	return (true);
 }
 
-bool	has_exit_and_player(t_map *game_map)
+bool	has_exit_and_player(t_map *game)
 {
 	int	i;
 	int	j;
 	int	player;
 
 	i = 0;
-	game_map->exit = 0;
+	game->exit = 0;
 	player = 0;
-	while (game_map->map[i])
+	while (game->map[i])
 	{
 		j = 0;
-		while (game_map->map[i][j])
+		while (game->map[i][j])
 		{
-			if (game_map->map[i][j] == PLAYER)
+			if (game->map[i][j] == PLAYER)
 			{
-				game_map->player_x = j;
-				game_map->player_y = i;
+				game->player_x = j;
+				game->player_y = i;
 				player++;
 			}
-			if (game_map->map[i][j] == EXIT)
-				game_map->exit++;
+			if (game->map[i][j] == EXIT)
+				game->exit++;
 			j++;
 		}
 		i++;
 	}
-	return (player == 1 && game_map->exit == 1);
+	return (player == 1 && game->exit == 1);
 }
 
-bool	has_collectibles(t_map *game_map)
+bool	has_collectibles(t_map *game)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	game_map->collectibles = 0;
-	while (game_map->map[i])
+	game->num_collectibles = 0;
+	while (game->map[i])
 	{
 		j = 0;
-		while (game_map->map[i][j])
+		while (game->map[i][j])
 		{
-			if (game_map->map[i][j] == COLLECTIBLE)
-				game_map->collectibles++;
+			if (game->map[i][j] == COLLECTIBLE)
+				game->num_collectibles++;
 			j++;
 		}
 		i++;
 	}
-	return (game_map->collectibles > 0);
+	return (game->num_collectibles > 0);
 }
 
-bool	has_only_valid_chars(t_map *game_map)
+bool	has_only_valid_chars(t_map *game)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	while (game_map->map[i])
+	while (game->map[i])
 	{
 		j = 0;
-		while (game_map->map[i][j])
+		while (game->map[i][j])
 		{
-			if (!is_valid_char(game_map->map[i][j]))
+			if (!is_valid_char(game->map[i][j]))
 				return (false);
 			j++;
 		}
