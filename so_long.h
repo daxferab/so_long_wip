@@ -6,7 +6,7 @@
 /*   By: daxferna <daxferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 21:39:03 by daxferna          #+#    #+#             */
-/*   Updated: 2025/01/31 01:12:31 by daxferna         ###   ########.fr       */
+/*   Updated: 2025/02/03 21:18:35 by daxferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ typedef struct s_map
 	int			height;
 	int			width;
 	int			num_collectibles;
-	int			exit;
+	int			exit_x;
+	int			exit_y;
 	int			player_x;
 	int			player_y;
 	mlx_image_t	*player;
@@ -54,11 +55,9 @@ void		error(int errno);
 void		free_map(char **map);
 
 /****************************** HOOK *****************************/
-// key_hook.c
+// hook.c
 void		move_player(t_map *game, int key);
 void		key_hook(mlx_key_data_t keydata, void *param);
-
-// loop_hook.c
 void		loop_hook(void *param);
 
 /***************************** PARSE *****************************/

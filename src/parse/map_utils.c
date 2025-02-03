@@ -6,7 +6,7 @@
 /*   By: daxferna <daxferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 01:56:15 by daxferna          #+#    #+#             */
-/*   Updated: 2025/01/31 00:59:00 by daxferna         ###   ########.fr       */
+/*   Updated: 2025/02/03 21:10:59 by daxferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,89 +15,108 @@
 bool	is_valid_char(char c)
 {
 	return (c == WALL || c == FLOOR || c == PLAYER
-	|| c == COLLECTIBLE || c == EXIT || c == '\n');
+		|| c == COLLECTIBLE || c == EXIT || c == '\n');
 }
 
 bool	is_wall(char *map_line)
 {
-	int	i;
+	int	row;
 
-	i = 0;
-	while (map_line[i] != '\n')
+	row = 0;
+	while (map_line[row] != '\n')
 	{
-		if (map_line[i] != WALL)
+		if (map_line[row] != WALL)
 			return (false);
-		i++;
+		row++;
 	}
 	return (true);
 }
 
+bool	is_player(int row, int col, t_map *game)
+{
+	if (game->map[row][col] == PLAYER)
+	{
+		game->player_x = col;
+		game->player_y = row;
+		return(true);
+	}
+	return (false);
+}
+
+bool	is_exit(int row, int col, t_map *game)
+{
+	if (game->map[row][col] == EXIT)
+	{
+		game->exit_x = col;
+		game->exit_y = row;
+		return(true);
+	}
+	return (false);
+}
+
 bool	has_exit_and_player(t_map *game)
 {
-	int	i;
-	int	j;
+	int	row;
+	int	col;
 	int	player;
+	int	exit;
 
-	i = 0;
-	game->exit = 0;
+	row = 0;
+	exit = 0;
 	player = 0;
-	while (game->map[i])
+	while (game->map[row])
 	{
-		j = 0;
-		while (game->map[i][j])
+		col = 0;
+		while (game->map[row][col])
 		{
-			if (game->map[i][j] == PLAYER)
-			{
-				game->player_x = j;
-				game->player_y = i;
+			if (is_player(row, col, game))
 				player++;
-			}
-			if (game->map[i][j] == EXIT)
-				game->exit++;
-			j++;
+			if (is_exit(row, col, game))
+				exit++;
+			col++;
 		}
-		i++;
+		row++;
 	}
-	return (player == 1 && game->exit == 1);
+	return (player == 1 && exit == 1);
 }
 
 bool	has_collectibles(t_map *game)
 {
-	int	i;
-	int	j;
+	int	row;
+	int	col;
 
-	i = 0;
+	row = 0;
 	game->num_collectibles = 0;
-	while (game->map[i])
+	while (game->map[row])
 	{
-		j = 0;
-		while (game->map[i][j])
+		col = 0;
+		while (game->map[row][col])
 		{
-			if (game->map[i][j] == COLLECTIBLE)
+			if (game->map[row][col] == COLLECTIBLE)
 				game->num_collectibles++;
-			j++;
+			col++;
 		}
-		i++;
+		row++;
 	}
 	return (game->num_collectibles > 0);
 }
 
 bool	has_only_valid_chars(t_map *game)
 {
-	int	i;
-	int	j;
+	int	row;
+	int	col;
 
-	i = 0;
-	while (game->map[i])
+	row = 0;
+	while (game->map[row])
 	{
-		j = 0;
-		while (game->map[i][j])
+		col = 0;
+		while (game->map[row][col])
 		{
-			if (!is_valid_char(game->map[i][j]))
+			if (!is_valid_char(game->map[row][col]))
 				return (false);
-			j++;
+			col++;
 		}
-		i++;
+		row++;
 	}
 	return (true);
 }

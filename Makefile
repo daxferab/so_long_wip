@@ -1,14 +1,13 @@
 NAME = so_long
 CC = cc
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -fsanitize=address -g3
 
 LIBFT = lib/libft/libft.a
 LIBMLX = lib/mlx
 MLX = $(LIBMLX)/build/libmlx42.a
 MLXFLAGS = -L $(LIBMLX)/build -l mlx42 -l glfw -l dl -l m -pthread
 
-SRC_FILES = src/hook/key_hook.c\
-			src/hook/loop_hook.c\
+SRC_FILES = src/hook.c\
 			src/initialize/draw_map.c\
 			src/initialize/draw_tools.c\
 			src/initialize/init_map.c\

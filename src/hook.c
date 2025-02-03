@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   key_hook.c                                         :+:      :+:    :+:   */
+/*   hook.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: daxferna <daxferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 23:11:29 by daxferna          #+#    #+#             */
-/*   Updated: 2025/01/31 00:59:00 by daxferna         ###   ########.fr       */
+/*   Updated: 2025/02/03 21:19:17 by daxferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../so_long.h"
+#include "../so_long.h"
 
 void	move_player(t_map *game, int key)
 {
@@ -58,4 +58,26 @@ void	key_hook(mlx_key_data_t keydata, void *param)
 		move_player(game, MLX_KEY_LEFT);
 	if (keydata.key == MLX_KEY_RIGHT && keydata.action == MLX_PRESS)
 		move_player(game, MLX_KEY_RIGHT);
+}
+
+void	loop_hook(void *param)
+{
+	t_map	*game;
+
+	game = (t_map *)param;
+	if (game->map[game->player_y][game->player_x] == COLLECTIBLE)
+	{
+		game->map[game->player_y][game->player_x] = FLOOR;
+		put_tile(FLOOR_IMG, game->window, game->player_y, game->player_x, 6);
+		game->num_collectibles--;
+	}
+	if (game->num_collectibles == 0)
+	{
+		put_tile(OPEN_EXIT_IMG, game->window, game->exit_y, game->exit_x, 6);
+		if (game->map[game->player_y][game->player_x] == EXIT)
+		{
+			free_map(game->map);
+			exit(0);
+		}
+	}
 }
