@@ -6,7 +6,7 @@
 /*   By: daxferna <daxferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 21:10:03 by daxferna          #+#    #+#             */
-/*   Updated: 2025/02/03 19:51:28 by daxferna         ###   ########.fr       */
+/*   Updated: 2025/02/04 20:37:04 by daxferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	draw_floor(t_map game)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (i < game.height)
@@ -32,8 +32,8 @@ void	draw_floor(t_map game)
 
 void	draw_walls(t_map game)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (i < game.height)
@@ -51,8 +51,8 @@ void	draw_walls(t_map game)
 
 void	draw_other_tiles(t_map *game)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (i < game->height)

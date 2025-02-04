@@ -6,7 +6,7 @@
 /*   By: daxferna <daxferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 21:17:40 by daxferna          #+#    #+#             */
-/*   Updated: 2025/02/03 20:49:52 by daxferna         ###   ########.fr       */
+/*   Updated: 2025/02/04 20:27:50 by daxferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,17 +82,17 @@ bool	is_map_closed(t_map *game)
 	return (true);
 }
 
-void	dfs(char **map, int pos_y, int pos_x, int *c, int *e)
+void	dfs(char **map, int pos_y, int pos_x, int *ce[])
 {
 	if (map[pos_x][pos_y] == '1' || map[pos_x][pos_y] == '#')
 		return ;
 	if (map[pos_x][pos_y] == 'C')
-		(*c)++;
+		(*ce)[0]++;
 	if (map[pos_x][pos_y] == 'E')
-		(*e)++;
+		(*ce)[1]++;
 	map[pos_x][pos_y] = '#';
-	dfs(map, pos_y + 1, pos_x, c, e);
-	dfs(map, pos_y - 1, pos_x, c, e);
-	dfs(map, pos_y, pos_x + 1, c, e);
-	dfs(map, pos_y, pos_x - 1, c, e);
+	dfs(map, pos_y + 1, pos_x, ce);
+	dfs(map, pos_y - 1, pos_x, ce);
+	dfs(map, pos_y, pos_x + 1, ce);
+	dfs(map, pos_y, pos_x - 1, ce);
 }

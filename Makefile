@@ -14,6 +14,7 @@ SRC_FILES = src/hook.c\
 			src/parse/arg_validation.c\
 			src/parse/map_utils.c\
 			src/parse/map_utils2.c\
+			src/parse/map_utils3.c\
 			src/parse/map_validation.c\
 			src/errors.c\
 			src/free_map.c\

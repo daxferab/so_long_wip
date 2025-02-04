@@ -6,7 +6,7 @@
 /*   By: daxferna <daxferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 01:56:15 by daxferna          #+#    #+#             */
-/*   Updated: 2025/02/03 21:10:59 by daxferna         ###   ########.fr       */
+/*   Updated: 2025/02/04 20:31:58 by daxferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,28 +30,6 @@ bool	is_wall(char *map_line)
 		row++;
 	}
 	return (true);
-}
-
-bool	is_player(int row, int col, t_map *game)
-{
-	if (game->map[row][col] == PLAYER)
-	{
-		game->player_x = col;
-		game->player_y = row;
-		return(true);
-	}
-	return (false);
-}
-
-bool	is_exit(int row, int col, t_map *game)
-{
-	if (game->map[row][col] == EXIT)
-	{
-		game->exit_x = col;
-		game->exit_y = row;
-		return(true);
-	}
-	return (false);
 }
 
 bool	has_exit_and_player(t_map *game)

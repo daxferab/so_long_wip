@@ -6,7 +6,7 @@
 /*   By: daxferna <daxferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 18:17:07 by daxferna          #+#    #+#             */
-/*   Updated: 2025/02/01 02:41:14 by daxferna         ###   ########.fr       */
+/*   Updated: 2025/02/04 20:29:55 by daxferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,14 @@ bool	map_to_matrix(int fd, t_map *game)
 
 bool	is_map_solvable(t_map *game)
 {
-	int		c;
-	int		e;
+	int		*ce;
 	char	**validation_map;
 
-	c = 0;
-	e = 0;
+	ce = malloc(sizeof(int) * 2);
+	if (!ce)
+		return (false);
+	ce[0] = 0;
+	ce[1] = 0;
 	if (!is_map_rectangular(game))
 		return (false);
 	if (!is_map_closed(game))
@@ -55,9 +57,9 @@ bool	is_map_solvable(t_map *game)
 	if (!has_collectibles(game))
 		return (false);
 	validation_map = dup_map(*game);
-	dfs(validation_map, game->player_x, game->player_y, &c, &e);
+	dfs(validation_map, game->player_x, game->player_y, &ce);
 	free_map(validation_map);
-	if (c != game->num_collectibles || e != 1)
+	if (ce[0] != game->num_collectibles || ce[1] != 1)
 		return (false);
 	return (true);
 }

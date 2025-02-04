@@ -6,7 +6,7 @@
 /*   By: daxferna <daxferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 23:11:29 by daxferna          #+#    #+#             */
-/*   Updated: 2025/02/03 21:19:17 by daxferna         ###   ########.fr       */
+/*   Updated: 2025/02/04 20:31:12 by daxferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,25 +15,25 @@
 void	move_player(t_map *game, int key)
 {
 	if (key == MLX_KEY_UP
-			&& game->map[game->player_y - 1][game->player_x] != WALL)
+		&& game->map[game->player_y - 1][game->player_x] != WALL)
 	{
 		game->player_y -= 1;
 		game->player->instances[0].y -= IMGSIZE;
 	}
 	if (key == MLX_KEY_DOWN
-			&& game->map[game->player_y + 1][game->player_x] != WALL)
+		&& game->map[game->player_y + 1][game->player_x] != WALL)
 	{
 		game->player_y += 1;
 		game->player->instances[0].y += IMGSIZE;
 	}
 	if (key == MLX_KEY_LEFT
-			&& game->map[game->player_y][game->player_x - 1] != WALL)
+		&& game->map[game->player_y][game->player_x - 1] != WALL)
 	{
 		game->player_x -= 1;
 		game->player->instances[0].x -= IMGSIZE;
 	}
 	if (key == MLX_KEY_RIGHT
-			&& game->map[game->player_y][game->player_x + 1] != WALL)
+		&& game->map[game->player_y][game->player_x + 1] != WALL)
 	{
 		game->player_x += 1;
 		game->player->instances[0].x += IMGSIZE;
