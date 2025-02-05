@@ -6,13 +6,13 @@
 /*   By: daxferna <daxferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 01:56:15 by daxferna          #+#    #+#             */
-/*   Updated: 2025/02/04 20:31:58 by daxferna         ###   ########.fr       */
+/*   Updated: 2025/02/05 17:41:37 by daxferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../so_long.h"
 
-bool	is_valid_char(char c)
+static bool	is_valid_char(char c)
 {
 	return (c == WALL || c == FLOOR || c == PLAYER
 		|| c == COLLECTIBLE || c == EXIT || c == '\n');

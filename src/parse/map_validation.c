@@ -6,13 +6,13 @@
 /*   By: daxferna <daxferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 18:17:07 by daxferna          #+#    #+#             */
-/*   Updated: 2025/02/04 20:29:55 by daxferna         ###   ########.fr       */
+/*   Updated: 2025/02/05 17:39:56 by daxferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../so_long.h"
 
-bool	map_to_matrix(int fd, t_map *game)
+static bool	map_to_matrix(int fd, t_map *game)
 {
 	char	*line;
 	int		i;
@@ -36,16 +36,11 @@ bool	map_to_matrix(int fd, t_map *game)
 	return (true);
 }
 
-bool	is_map_solvable(t_map *game)
+static bool	is_map_solvable(t_map *game)
 {
 	int		*ce;
 	char	**validation_map;
 
-	ce = malloc(sizeof(int) * 2);
-	if (!ce)
-		return (false);
-	ce[0] = 0;
-	ce[1] = 0;
 	if (!is_map_rectangular(game))
 		return (false);
 	if (!is_map_closed(game))
@@ -57,11 +52,16 @@ bool	is_map_solvable(t_map *game)
 	if (!has_collectibles(game))
 		return (false);
 	validation_map = dup_map(*game);
+	ce = malloc(sizeof(int) * 2);
+	if (!ce)
+		return (false);
+	ce[0] = 0;
+	ce[1] = 0;
 	dfs(validation_map, game->player_x, game->player_y, &ce);
 	free_map(validation_map);
 	if (ce[0] != game->num_collectibles || ce[1] != 1)
-		return (false);
-	return (true);
+		return (free(ce), false);
+	return (free(ce), true);
 }
 
 bool	is_map_valid(char	*arg, t_map	*game)

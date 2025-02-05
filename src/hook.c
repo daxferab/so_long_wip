@@ -6,13 +6,13 @@
 /*   By: daxferna <daxferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 23:11:29 by daxferna          #+#    #+#             */
-/*   Updated: 2025/02/04 20:31:12 by daxferna         ###   ########.fr       */
+/*   Updated: 2025/02/05 17:29:27 by daxferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-void	move_player(t_map *game, int key)
+static void	move_player(t_map *game, int key)
 {
 	if (key == MLX_KEY_UP
 		&& game->map[game->player_y - 1][game->player_x] != WALL)

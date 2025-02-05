@@ -6,13 +6,13 @@
 /*   By: daxferna <daxferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 21:10:03 by daxferna          #+#    #+#             */
-/*   Updated: 2025/02/04 20:37:04 by daxferna         ###   ########.fr       */
+/*   Updated: 2025/02/05 17:27:23 by daxferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../so_long.h"
 
-void	draw_floor(t_map game)
+static void	draw_floor(t_map game)
 {
 	int	i;
 	int	j;
@@ -30,7 +30,7 @@ void	draw_floor(t_map game)
 	}
 }
 
-void	draw_walls(t_map game)
+static void	draw_walls(t_map game)
 {
 	int	i;
 	int	j;
@@ -49,7 +49,7 @@ void	draw_walls(t_map game)
 	}
 }
 
-void	draw_other_tiles(t_map *game)
+static void	draw_other_tiles(t_map *game)
 {
 	int	i;
 	int	j;

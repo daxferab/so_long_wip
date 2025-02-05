@@ -6,13 +6,13 @@
 /*   By: daxferna <daxferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 22:16:45 by daxferna          #+#    #+#             */
-/*   Updated: 2025/01/31 00:59:00 by daxferna         ###   ########.fr       */
+/*   Updated: 2025/02/05 17:32:13 by daxferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../so_long.h"
 
-bool	is_ber_extension(char	*archive)
+static bool	is_ber_extension(char	*archive)
 {
 	int		archive_len;
 

@@ -6,7 +6,7 @@
 /*   By: daxferna <daxferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 18:30:38 by daxferna          #+#    #+#             */
-/*   Updated: 2025/02/04 20:45:49 by daxferna         ###   ########.fr       */
+/*   Updated: 2025/02/05 17:21:17 by daxferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,19 @@ mlx_image_t	*put_tile(char *path, mlx_t *window, int row, int col, int depth)
 	mlx_image_t		*img;
 
 	texture = mlx_load_png(path);
+	if (!texture)
+		error(4);
 	img = mlx_texture_to_image(window, texture);
+	free(texture);
 	mlx_resize_image(img, IMGSIZE, IMGSIZE);
+	if (!img)
+		error(4);
 	mlx_image_to_window(window, img, IMGSIZE * col, IMGSIZE * row);
 	mlx_set_instance_depth(img->instances, depth);
 	return (img);
 }
 
-bool	has_wall_near(t_map game, int row, int col)
+static bool	has_wall_near(t_map game, int row, int col)
 {
 	if (row < 0 || row >= game.height || col < 0 || col >= game.width)
 		return (false);

@@ -6,7 +6,7 @@
 /*   By: daxferna <daxferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 21:39:03 by daxferna          #+#    #+#             */
-/*   Updated: 2025/02/04 20:32:39 by daxferna         ###   ########.fr       */
+/*   Updated: 2025/02/05 17:41:44 by daxferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,15 +54,12 @@ void		error(int errno);
 // free_map.c
 void		free_map(char **map);
 
-/****************************** HOOK *****************************/
 // hook.c
-void		move_player(t_map *game, int key);
 void		key_hook(mlx_key_data_t keydata, void *param);
 void		loop_hook(void *param);
 
 /***************************** PARSE *****************************/
 // arg_validation.c
-bool		is_ber_extension(char	*archive);
 void		validate_arg(char *arg, t_map *game);
 
 // map_utils.c
@@ -70,7 +67,6 @@ bool		is_wall(char *map_line);
 bool		has_exit_and_player(t_map *game);
 bool		has_collectibles(t_map *game);
 bool		has_only_valid_chars(t_map *game);
-bool		is_valid_char(char c);
 
 //map_utils2.c
 int			count_fd_lines(int fd);
@@ -84,20 +80,14 @@ bool		is_player(int row, int col, t_map *game);
 bool		is_exit(int row, int col, t_map *game);
 
 // map_validation.c
-bool		map_to_matrix(int fd, t_map *game);
-bool		is_map_solvable(t_map *game);
 bool		is_map_valid(char	*arg, t_map *game);
 
 /*************************** INITIALIZE **************************/
 // draw_tools.c
 mlx_image_t	*put_tile(char *path, mlx_t *window, int row, int col, int depth);
-bool		has_wall_near(t_map game, int row, int col);
 void		which_fence(mlx_t *window, t_map game, int i, int j);
 
 // draw_map.c
-void		draw_floor(t_map game);
-void		draw_walls(t_map game);
-void		draw_other_tiles(t_map *game);
 void		draw_map(t_map *game);
 
 // init_map.c
