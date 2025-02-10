@@ -6,7 +6,7 @@
 /*   By: daxferna <daxferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 21:39:03 by daxferna          #+#    #+#             */
-/*   Updated: 2025/02/10 18:43:14 by daxferna         ###   ########.fr       */
+/*   Updated: 2025/02/11 00:30:04 by daxferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ typedef struct s_map
 }	t_map;
 
 // errors.c
-void		error(int errno);
+void		error(int errno, t_map *game);
 
 // free_map.c
 void		free_map(char **map);
@@ -85,8 +85,8 @@ bool		is_map_valid(char	*arg, t_map *game);
 
 /*************************** INITIALIZE **************************/
 // draw_tools.c
-mlx_image_t	*put_tile(char *path, mlx_t *window, int row, int col, int depth);
-void		which_fence(mlx_t *window, t_map game, int i, int j);
+mlx_image_t	*put_tile(char *path, t_map	*game, int row, int col, int depth);
+void		which_fence(t_map game, int i, int j);
 
 // draw_map.c
 void		draw_map(t_map *game);

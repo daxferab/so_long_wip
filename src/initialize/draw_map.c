@@ -6,7 +6,7 @@
 /*   By: daxferna <daxferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 21:10:03 by daxferna          #+#    #+#             */
-/*   Updated: 2025/02/10 19:15:50 by daxferna         ###   ########.fr       */
+/*   Updated: 2025/02/11 00:30:43 by daxferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void	draw_floor(t_map game)
 		j = 0;
 		while (j < game.width)
 		{
-			put_tile(FLOOR_IMG, game.window, i, j, 0);
+			put_tile(FLOOR_IMG, &game, i, j, 0);
 			j++;
 		}
 		i++;
@@ -42,7 +42,7 @@ static void	draw_walls(t_map game)
 		while (j < game.width)
 		{
 			if (game.map[i][j] == WALL)
-				which_fence(game.window, game, i, j);
+				which_fence(game, i, j);
 			j++;
 		}
 		i++;
@@ -61,11 +61,11 @@ static void	draw_other_tiles(t_map *game)
 		while (j < game->width)
 		{
 			if (game->map[i][j] == PLAYER)
-				game->player = put_tile(PLAYER_IMG, game->window, i, j, 8);
+				game->player = put_tile(PLAYER_IMG, game, i, j, 8);
 			else if (game->map[i][j] == COLLECTIBLE)
-				put_tile(COLLECT_IMG, game->window, i, j, 5);
+				put_tile(COLLECT_IMG, game, i, j, 5);
 			else if (game->map[i][j] == EXIT)
-				put_tile(CLOSED_EXIT_IMG, game->window, i, j, 5);
+				put_tile(CLOSED_EXIT_IMG, game, i, j, 5);
 			j++;
 		}
 		i++;

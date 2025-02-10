@@ -6,13 +6,13 @@
 /*   By: daxferna <daxferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 22:12:41 by daxferna          #+#    #+#             */
-/*   Updated: 2024/12/28 19:00:11 by daxferna         ###   ########.fr       */
+/*   Updated: 2025/02/11 00:25:34 by daxferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-void	error(int errno)
+void	error(int errno, t_map *game)
 {
 	if (errno == 1)
 		ft_putstr_fd("Error\nNúmero incorrecto de argumentos\n", 2);
@@ -20,5 +20,10 @@ void	error(int errno)
 		ft_putstr_fd("Error\nEl argumento no es un archivo válido (.ber)\n", 2);
 	else if (errno == 3)
 		ft_putstr_fd("Error\nEl archivo no es un mapa válido\n", 2);
+	else if (errno == 4)
+	{
+		free_game(game);
+		ft_putstr_fd("Error\nNo se pudo inicializar la ventana\n", 2);
+	}
 	exit(1);
 }

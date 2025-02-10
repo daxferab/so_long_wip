@@ -6,7 +6,7 @@
 /*   By: daxferna <daxferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 22:16:45 by daxferna          #+#    #+#             */
-/*   Updated: 2025/02/05 17:32:13 by daxferna         ###   ########.fr       */
+/*   Updated: 2025/02/11 00:26:29 by daxferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static bool	is_ber_extension(char	*archive)
 void	validate_arg(char	*arg, t_map	*game)
 {
 	if (!is_ber_extension(arg))
-		error(2);
+		error(2, game);
 	if (!is_map_valid(arg, game))
-		error(3);
+		error(3, game);
 }
