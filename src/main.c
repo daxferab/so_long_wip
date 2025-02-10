@@ -6,7 +6,7 @@
 /*   By: daxferna <daxferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 22:05:21 by daxferna          #+#    #+#             */
-/*   Updated: 2025/02/05 17:45:11 by daxferna         ###   ########.fr       */
+/*   Updated: 2025/02/10 19:08:04 by daxferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,6 @@ int	main(int argc, char **argv)
 	mlx_key_hook(game.window, &key_hook, &game);
 	mlx_loop_hook(game.window, &loop_hook, &game);
 	mlx_loop(game.window);
-	free_map(game.map);
+	free_game(&game);
 	return (0);
 }

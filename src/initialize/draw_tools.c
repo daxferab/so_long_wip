@@ -6,7 +6,7 @@
 /*   By: daxferna <daxferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 18:30:38 by daxferna          #+#    #+#             */
-/*   Updated: 2025/02/05 17:21:17 by daxferna         ###   ########.fr       */
+/*   Updated: 2025/02/10 18:52:32 by daxferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ mlx_image_t	*put_tile(char *path, mlx_t *window, int row, int col, int depth)
 	if (!texture)
 		error(4);
 	img = mlx_texture_to_image(window, texture);
-	free(texture);
+	mlx_delete_texture(texture);
 	mlx_resize_image(img, IMGSIZE, IMGSIZE);
 	if (!img)
 		error(4);

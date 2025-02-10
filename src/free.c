@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_map.c                                         :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: daxferna <daxferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 01:05:37 by daxferna          #+#    #+#             */
-/*   Updated: 2025/01/31 01:19:27 by daxferna         ###   ########.fr       */
+/*   Updated: 2025/02/10 18:41:27 by daxferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,4 +20,10 @@ void	free_map(char **map)
 	while (map[i])
 		free(map[i++]);
 	free(map);
+}
+
+void	free_game(t_map *game)
+{
+	mlx_terminate(game->window);
+	free_map(game->map);
 }

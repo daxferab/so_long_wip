@@ -6,7 +6,7 @@
 /*   By: daxferna <daxferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 18:17:07 by daxferna          #+#    #+#             */
-/*   Updated: 2025/02/05 17:39:56 by daxferna         ###   ########.fr       */
+/*   Updated: 2025/02/10 18:48:19 by daxferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static bool	is_map_solvable(t_map *game)
 	validation_map = dup_map(*game);
 	ce = malloc(sizeof(int) * 2);
 	if (!ce)
-		return (false);
+		return (free_map(validation_map), false);
 	ce[0] = 0;
 	ce[1] = 0;
 	dfs(validation_map, game->player_x, game->player_y, &ce);

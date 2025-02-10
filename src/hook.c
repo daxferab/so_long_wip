@@ -6,7 +6,7 @@
 /*   By: daxferna <daxferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 23:11:29 by daxferna          #+#    #+#             */
-/*   Updated: 2025/02/05 17:29:27 by daxferna         ###   ########.fr       */
+/*   Updated: 2025/02/10 18:42:08 by daxferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	key_hook(mlx_key_data_t keydata, void *param)
 	game = (t_map *)param;
 	if (keydata.key == MLX_KEY_ESCAPE)
 	{
-		free_map(game->map);
+		free_game(game);
 		exit(0);
 	}
 	if (keydata.key == MLX_KEY_UP && keydata.action == MLX_PRESS)
@@ -76,7 +76,7 @@ void	loop_hook(void *param)
 		put_tile(OPEN_EXIT_IMG, game->window, game->exit_y, game->exit_x, 6);
 		if (game->map[game->player_y][game->player_x] == EXIT)
 		{
-			free_map(game->map);
+			free_game(game);
 			exit(0);
 		}
 	}

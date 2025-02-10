@@ -6,7 +6,7 @@
 /*   By: daxferna <daxferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 21:39:03 by daxferna          #+#    #+#             */
-/*   Updated: 2025/02/05 17:41:44 by daxferna         ###   ########.fr       */
+/*   Updated: 2025/02/10 18:43:14 by daxferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ void		error(int errno);
 
 // free_map.c
 void		free_map(char **map);
+void		free_game(t_map *game);
 
 // hook.c
 void		key_hook(mlx_key_data_t keydata, void *param);

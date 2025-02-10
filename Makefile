@@ -1,6 +1,6 @@
 NAME = so_long
 CC = cc
-CFLAGS = -Wall -Werror -Wextra -fsanitize=address -g3
+CFLAGS = -Wall -Werror -Wextra
 
 LIBFT = lib/libft/libft.a
 LIBMLX = lib/mlx
@@ -17,7 +17,7 @@ SRC_FILES = src/hook.c\
 			src/parse/map_utils3.c\
 			src/parse/map_validation.c\
 			src/errors.c\
-			src/free_map.c\
+			src/free.c\
 			src/main.c
 
 OBJ_FILES = $(SRC_FILES:.c=.o)
@@ -45,6 +45,6 @@ fclean:
 re: fclean all
 
 run: all
-	./$(NAME) maptry.ber
+	./$(NAME) maps/maptry.ber
 
 .PHONY: all clean fclean re
