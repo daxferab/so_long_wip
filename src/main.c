@@ -6,7 +6,7 @@
 /*   By: daxferna <daxferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 22:05:21 by daxferna          #+#    #+#             */
-/*   Updated: 2025/02/11 00:25:57 by daxferna         ###   ########.fr       */
+/*   Updated: 2025/02/11 23:11:22 by daxferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int	main(int argc, char **argv)
 	if (argc != 2)
 		error(1, &game);
 	validate_arg(argv[1], &game);
+	game.window = NULL;
 	init_map(&game);
 	mlx_key_hook(game.window, &key_hook, &game);
 	mlx_loop_hook(game.window, &loop_hook, &game);
