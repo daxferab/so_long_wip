@@ -6,43 +6,45 @@
 /*   By: daxferna <daxferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 23:11:29 by daxferna          #+#    #+#             */
-/*   Updated: 2025/02/11 00:28:05 by daxferna         ###   ########.fr       */
+/*   Updated: 2025/02/12 00:59:28 by daxferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-static void	move_player(t_map *game, int key)
+static bool	move_player(t_map *game, int key)
 {
-	if (key == MLX_KEY_UP
-		&& game->map[game->player_y - 1][game->player_x] != WALL)
+	if (key == MLX_KEY_UP && game->map[game->pla_y - 1][game->pla_x] != WALL)
 	{
-		game->player_y -= 1;
+		game->pla_y -= 1;
 		game->player->instances[0].y -= IMGSIZE;
+		return (true);
 	}
-	if (key == MLX_KEY_DOWN
-		&& game->map[game->player_y + 1][game->player_x] != WALL)
+	if (key == MLX_KEY_DOWN && game->map[game->pla_y + 1][game->pla_x] != WALL)
 	{
-		game->player_y += 1;
+		game->pla_y += 1;
 		game->player->instances[0].y += IMGSIZE;
+		return (true);
 	}
-	if (key == MLX_KEY_LEFT
-		&& game->map[game->player_y][game->player_x - 1] != WALL)
+	if (key == MLX_KEY_LEFT && game->map[game->pla_y][game->pla_x - 1] != WALL)
 	{
-		game->player_x -= 1;
+		game->pla_x -= 1;
 		game->player->instances[0].x -= IMGSIZE;
+		return (true);
 	}
-	if (key == MLX_KEY_RIGHT
-		&& game->map[game->player_y][game->player_x + 1] != WALL)
+	if (key == MLX_KEY_RIGHT && game->map[game->pla_y][game->pla_x + 1] != WALL)
 	{
-		game->player_x += 1;
+		game->pla_x += 1;
 		game->player->instances[0].x += IMGSIZE;
+		return (true);
 	}
+	return (false);
 }
 
 void	key_hook(mlx_key_data_t keydata, void *param)
 {
 	t_map	*game;
+	bool	moved;
 
 	game = (t_map *)param;
 	if (keydata.key == MLX_KEY_ESCAPE)
@@ -50,14 +52,20 @@ void	key_hook(mlx_key_data_t keydata, void *param)
 		free_game(game);
 		exit(0);
 	}
+	moved = false;
 	if (keydata.key == MLX_KEY_UP && keydata.action == MLX_PRESS)
-		move_player(game, MLX_KEY_UP);
+		moved = move_player(game, MLX_KEY_UP);
 	if (keydata.key == MLX_KEY_DOWN && keydata.action == MLX_PRESS)
-		move_player(game, MLX_KEY_DOWN);
+		moved = move_player(game, MLX_KEY_DOWN);
 	if (keydata.key == MLX_KEY_LEFT && keydata.action == MLX_PRESS)
-		move_player(game, MLX_KEY_LEFT);
+		moved = move_player(game, MLX_KEY_LEFT);
 	if (keydata.key == MLX_KEY_RIGHT && keydata.action == MLX_PRESS)
-		move_player(game, MLX_KEY_RIGHT);
+		moved = move_player(game, MLX_KEY_RIGHT);
+	if (moved)
+	{
+		game->movements++;
+		ft_printf("Movements: %d\n", game->movements);
+	}
 }
 
 void	loop_hook(void *param)
@@ -65,16 +73,16 @@ void	loop_hook(void *param)
 	t_map	*game;
 
 	game = (t_map *)param;
-	if (game->map[game->player_y][game->player_x] == COLLECTIBLE)
+	if (game->map[game->pla_y][game->pla_x] == COLLECTIBLE)
 	{
-		game->map[game->player_y][game->player_x] = FLOOR;
-		put_tile(FLOOR_IMG, game, game->player_y, game->player_x, 6);
+		game->map[game->pla_y][game->pla_x] = FLOOR;
+		put_tile(FLOOR_IMG, game, game->pla_y, game->pla_x, 6);
 		game->num_collectibles--;
 	}
 	if (game->num_collectibles == 0)
 	{
 		put_tile(OPEN_EXIT_IMG, game, game->exit_y, game->exit_x, 6);
-		if (game->map[game->player_y][game->player_x] == EXIT)
+		if (game->map[game->pla_y][game->pla_x] == EXIT)
 		{
 			free_game(game);
 			exit(0);

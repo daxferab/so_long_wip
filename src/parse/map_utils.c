@@ -6,7 +6,7 @@
 /*   By: daxferna <daxferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 01:56:15 by daxferna          #+#    #+#             */
-/*   Updated: 2025/02/05 17:41:37 by daxferna         ###   ########.fr       */
+/*   Updated: 2025/02/12 01:04:14 by daxferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ bool	has_exit_and_player(t_map *game)
 		}
 		row++;
 	}
+	game->movements = 0;
 	return (player == 1 && exit == 1);
 }
 

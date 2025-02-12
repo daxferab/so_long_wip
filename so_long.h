@@ -6,7 +6,7 @@
 /*   By: daxferna <daxferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 21:39:03 by daxferna          #+#    #+#             */
-/*   Updated: 2025/02/11 00:30:04 by daxferna         ###   ########.fr       */
+/*   Updated: 2025/02/12 00:57:04 by daxferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,12 @@ typedef struct s_map
 	int			num_collectibles;
 	int			exit_x;
 	int			exit_y;
-	int			player_x;
-	int			player_y;
+	int			pla_x;
+	int			pla_y;
 	mlx_image_t	*player;
 	mlx_image_t *collectibles;
 	mlx_t		*window;
+	int			movements;
 }	t_map;
 
 // errors.c

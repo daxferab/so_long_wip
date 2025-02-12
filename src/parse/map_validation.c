@@ -6,7 +6,7 @@
 /*   By: daxferna <daxferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 18:17:07 by daxferna          #+#    #+#             */
-/*   Updated: 2025/02/10 18:48:19 by daxferna         ###   ########.fr       */
+/*   Updated: 2025/02/12 00:57:04 by daxferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static bool	is_map_solvable(t_map *game)
 		return (free_map(validation_map), false);
 	ce[0] = 0;
 	ce[1] = 0;
-	dfs(validation_map, game->player_x, game->player_y, &ce);
+	dfs(validation_map, game->pla_x, game->pla_y, &ce);
 	free_map(validation_map);
 	if (ce[0] != game->num_collectibles || ce[1] != 1)
 		return (free(ce), false);
