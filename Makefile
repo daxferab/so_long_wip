@@ -48,3 +48,6 @@ run: all
 	./$(NAME) maps/maptry.ber
 
 .PHONY: all clean fclean re
+#TODO: Beautify the Makefile output:
+#	No mostrar instrucciones de compilación
+#	Compilar todo en una carpeta de objetos

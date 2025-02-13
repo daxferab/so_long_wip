@@ -6,7 +6,7 @@
 /*   By: daxferna <daxferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 22:12:41 by daxferna          #+#    #+#             */
-/*   Updated: 2025/02/11 00:25:34 by daxferna         ###   ########.fr       */
+/*   Updated: 2025/02/13 12:15:24 by daxferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	error(int errno, t_map *game)
 {
+	//TODO: Implementar mensajes de error mas descriptivos
 	if (errno == 1)
 		ft_putstr_fd("Error\nNúmero incorrecto de argumentos\n", 2);
 	else if (errno == 2)
