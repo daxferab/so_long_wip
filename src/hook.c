@@ -6,7 +6,7 @@
 /*   By: daxferna <daxferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 23:11:29 by daxferna          #+#    #+#             */
-/*   Updated: 2025/02/12 00:59:28 by daxferna         ###   ########.fr       */
+/*   Updated: 2025/02/13 12:09:11 by daxferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	loop_hook(void *param)
 	if (game->map[game->pla_y][game->pla_x] == COLLECTIBLE)
 	{
 		game->map[game->pla_y][game->pla_x] = FLOOR;
-		put_tile(FLOOR_IMG, game, game->pla_y, game->pla_x, 6);
+		put_tile(FLOOR_IMG, game, game->pla_y, game->pla_x, 6); //TODO: Cambiar por vaca decapitada
 		game->num_collectibles--;
 	}
 	if (game->num_collectibles == 0)

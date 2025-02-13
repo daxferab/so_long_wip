@@ -6,7 +6,7 @@
 /*   By: daxferna <daxferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 22:05:21 by daxferna          #+#    #+#             */
-/*   Updated: 2025/02/11 23:11:22 by daxferna         ###   ########.fr       */
+/*   Updated: 2025/02/13 12:10:20 by daxferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,3 +27,6 @@ int	main(int argc, char **argv)
 	free_game(&game);
 	return (0);
 }
+//TODO: Norminette
+//TODO: Sprites más bonitos
+//TODO: bonus?: Animaciones, enemigos, contador en pantalla
