@@ -6,7 +6,7 @@
 /*   By: daxferna <daxferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 21:39:03 by daxferna          #+#    #+#             */
-/*   Updated: 2025/02/12 00:57:04 by daxferna         ###   ########.fr       */
+/*   Updated: 2025/02/17 21:27:35 by daxferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
 # define PLAYER 'P'
 # define COLLECTIBLE 'C'
 # define EXIT 'E'
-# define IMGSIZE 128
 # define CLOSED_EXIT_IMG "textures/closedExit.png"
 # define COLLECT_IMG "textures/collectible.png"
 # define FLOOR_IMG "textures/floor.png"
@@ -38,6 +37,7 @@ typedef struct s_map
 	char		**map;
 	int			height;
 	int			width;
+	int			tile_size;
 	int			num_collectibles;
 	int			exit_x;
 	int			exit_y;

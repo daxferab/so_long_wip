@@ -6,7 +6,7 @@
 /*   By: daxferna <daxferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 18:30:38 by daxferna          #+#    #+#             */
-/*   Updated: 2025/02/11 00:29:46 by daxferna         ###   ########.fr       */
+/*   Updated: 2025/02/17 21:28:13 by daxferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,12 @@ mlx_image_t	*put_tile(char *path, t_map *game, int row, int col, int depth)
 		error(4, game);
 	img = mlx_texture_to_image(game->window, texture);
 	mlx_delete_texture(texture);
-	mlx_resize_image(img, IMGSIZE, IMGSIZE);
+	game->tile_size = (game->window->width / game->width);
+	mlx_resize_image(img, game->tile_size, game->tile_size);
 	if (!img)
 		error(4, game);
-	mlx_image_to_window(game->window, img, IMGSIZE * col, IMGSIZE * row);
+	mlx_image_to_window(game->window, img, game->tile_size * col,
+			game->tile_size * row);
 	mlx_set_instance_depth(img->instances, depth);
 	return (img);
 }

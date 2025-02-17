@@ -6,7 +6,7 @@
 /*   By: daxferna <daxferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 23:11:29 by daxferna          #+#    #+#             */
-/*   Updated: 2025/02/13 12:09:11 by daxferna         ###   ########.fr       */
+/*   Updated: 2025/02/17 21:28:31 by daxferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,25 +17,25 @@ static bool	move_player(t_map *game, int key)
 	if (key == MLX_KEY_UP && game->map[game->pla_y - 1][game->pla_x] != WALL)
 	{
 		game->pla_y -= 1;
-		game->player->instances[0].y -= IMGSIZE;
+		game->player->instances[0].y -= game->tile_size;
 		return (true);
 	}
 	if (key == MLX_KEY_DOWN && game->map[game->pla_y + 1][game->pla_x] != WALL)
 	{
 		game->pla_y += 1;
-		game->player->instances[0].y += IMGSIZE;
+		game->player->instances[0].y += game->tile_size;
 		return (true);
 	}
 	if (key == MLX_KEY_LEFT && game->map[game->pla_y][game->pla_x - 1] != WALL)
 	{
 		game->pla_x -= 1;
-		game->player->instances[0].x -= IMGSIZE;
+		game->player->instances[0].x -= game->tile_size;
 		return (true);
 	}
 	if (key == MLX_KEY_RIGHT && game->map[game->pla_y][game->pla_x + 1] != WALL)
 	{
 		game->pla_x += 1;
-		game->player->instances[0].x += IMGSIZE;
+		game->player->instances[0].x += game->tile_size;
 		return (true);
 	}
 	return (false);
