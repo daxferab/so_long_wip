@@ -6,7 +6,7 @@
 /*   By: daxferna <daxferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 22:05:21 by daxferna          #+#    #+#             */
-/*   Updated: 2025/02/18 22:01:47 by daxferna         ###   ########.fr       */
+/*   Updated: 2025/02/18 23:01:47 by daxferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,3 +28,4 @@ int	main(int argc, char **argv)
 	return (0);
 }
 //TODO: Norminette
+//TODO: Check valgrind
