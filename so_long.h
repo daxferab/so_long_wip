@@ -6,7 +6,7 @@
 /*   By: daxferna <daxferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 21:39:03 by daxferna          #+#    #+#             */
-/*   Updated: 2025/02/17 21:27:35 by daxferna         ###   ########.fr       */
+/*   Updated: 2025/02/18 21:55:47 by daxferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@
 # define COLLECTIBLE 'C'
 # define EXIT 'E'
 # define CLOSED_EXIT_IMG "textures/closedExit.png"
-# define COLLECT_IMG "textures/collectible.png"
+# define COLLECT_IMG "textures/collect.png"
+# define COLLECTED_IMG "textures/collected.png"
 # define FLOOR_IMG "textures/floor.png"
 # define OPEN_EXIT_IMG "textures/openExit.png"
 # define PLAYER_IMG "textures/player.png"
