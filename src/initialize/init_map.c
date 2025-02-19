@@ -6,7 +6,7 @@
 /*   By: daxferna <daxferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 18:32:45 by daxferna          #+#    #+#             */
-/*   Updated: 2025/02/18 23:05:40 by daxferna         ###   ########.fr       */
+/*   Updated: 2025/02/19 19:37:08 by daxferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void	create_window(t_map *game)
 	game->window = mlx_init(game->width * size,
 			game->height * size, "so_long", false);
 	if (!game->window)
-		error(4, game);
+		error(1, game);
 }
 
 void	init_map(t_map *game)

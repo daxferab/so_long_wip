@@ -6,7 +6,7 @@
 /*   By: daxferna <daxferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 18:30:38 by daxferna          #+#    #+#             */
-/*   Updated: 2025/02/18 22:57:48 by daxferna         ###   ########.fr       */
+/*   Updated: 2025/02/19 19:37:02 by daxferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ mlx_image_t	*put_tile(char *path, t_map *game, int row, int col)
 
 	texture = mlx_load_png(path);
 	if (!texture)
-		error(4, game);
+		error(1, game);
 	img = mlx_texture_to_image(game->window, texture);
 	mlx_delete_texture(texture);
 	game->tile_size = (game->window->width / game->width);
 	mlx_resize_image(img, game->tile_size, game->tile_size);
 	if (!img)
-		error(4, game);
+		error(1, game);
 	mlx_image_to_window(game->window, img, game->tile_size * col,
 		game->tile_size * row);
 	mlx_set_instance_depth(img->instances, game->depth);
