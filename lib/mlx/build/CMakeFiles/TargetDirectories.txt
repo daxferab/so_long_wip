@@ -1,0 +1,7 @@
+/home/daxferna/Desktop/so_long_github/lib/mlx/build/CMakeFiles/mlx42.dir
+/home/daxferna/Desktop/so_long_github/lib/mlx/build/CMakeFiles/edit_cache.dir
+/home/daxferna/Desktop/so_long_github/lib/mlx/build/CMakeFiles/rebuild_cache.dir
+/home/daxferna/Desktop/so_long_github/lib/mlx/build/CMakeFiles/list_install_components.dir
+/home/daxferna/Desktop/so_long_github/lib/mlx/build/CMakeFiles/install.dir
+/home/daxferna/Desktop/so_long_github/lib/mlx/build/CMakeFiles/install/local.dir
+/home/daxferna/Desktop/so_long_github/lib/mlx/build/CMakeFiles/install/strip.dir
