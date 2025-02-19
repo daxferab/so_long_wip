@@ -6,7 +6,7 @@
 /*   By: daxferna <daxferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 21:39:03 by daxferna          #+#    #+#             */
-/*   Updated: 2025/02/18 22:36:23 by daxferna         ###   ########.fr       */
+/*   Updated: 2025/02/19 20:49:55 by daxferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,13 +70,13 @@ void		validate_arg(char *arg, t_map *game);
 bool		is_wall(char *map_line);
 bool		has_exit_and_player(t_map *game);
 bool		has_collectibles(t_map *game);
-bool		has_only_valid_chars(t_map *game);
+void		has_only_valid_chars(t_map *game);
 
 //map_utils2.c
 int			count_fd_lines(int fd);
 char		**dup_map(t_map game);
-bool		is_map_rectangular(t_map *game);
-bool		is_map_closed(t_map *game);
+void		is_map_rectangular(t_map *game);
+void		is_map_closed(t_map *game);
 void		dfs(char **map, int	pos_x, int pos_y, int ce[]);
 
 //map_utils3.c
@@ -84,7 +84,7 @@ bool		is_player(int row, int col, t_map *game);
 bool		is_exit(int row, int col, t_map *game);
 
 // map_validation.c
-bool		is_map_valid(char	*arg, t_map *game);
+void		is_map_valid(char	*arg, t_map *game);
 
 /*************************** INITIALIZE **************************/
 // draw_tools.c

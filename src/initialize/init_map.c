@@ -6,7 +6,7 @@
 /*   By: daxferna <daxferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 18:32:45 by daxferna          #+#    #+#             */
-/*   Updated: 2025/02/19 19:37:08 by daxferna         ###   ########.fr       */
+/*   Updated: 2025/02/19 21:03:03 by daxferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ static void	create_window(t_map *game)
 	int	screen_w;
 	int	screen_h;
 	int	size;
-	size = 1;
 
 	mlx_set_setting(MLX_HEADLESS, true);
 	game->window = mlx_init(1, 1, "", false);

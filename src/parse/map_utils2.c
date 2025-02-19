@@ -6,7 +6,7 @@
 /*   By: daxferna <daxferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 21:17:40 by daxferna          #+#    #+#             */
-/*   Updated: 2025/02/18 22:21:42 by daxferna         ###   ########.fr       */
+/*   Updated: 2025/02/19 20:57:46 by daxferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ char	**dup_map(t_map game)
 	return (new_map);
 }
 
-bool	is_map_rectangular(t_map *game)
+void	is_map_rectangular(t_map *game)
 {
 	int		i;
 
@@ -56,30 +56,33 @@ bool	is_map_rectangular(t_map *game)
 	while (game->map[i])
 	{
 		if (ft_strlen(game->map[i]) - 1 != game->width)
-			return (false);
+		{
+			free_map(game->map);
+			error(6, game);
+		}
 		i++;
 	}
-	return (true);
 }
 
-bool	is_map_closed(t_map *game)
+void	is_map_closed(t_map *game)
 {
 	int	i;
 
 	i = 0;
-	if (!is_wall(game->map[0]))
-		return (false);
-	if (!is_wall(game->map[game->height - 1]))
-		return (false);
+	if (!is_wall(game->map[0]) || !is_wall(game->map[game->height - 1]))
+	{
+		free_map(game->map);
+		error(7, game);
+	}
 	while (game->map[i])
 	{
-		if (game->map[i][0] != WALL)
-			return (false);
-		if (game->map[i][game->width - 1] != WALL)
-			return (false);
+		if (game->map[i][0] != WALL || game->map[i][game->width - 1] != WALL)
+		{
+			free_map(game->map);
+			error(7, game);
+		}
 		i++;
 	}
-	return (true);
 }
 
 void	dfs(char **map, int pos_y, int pos_x, int ce[])

@@ -6,7 +6,7 @@
 /*   By: daxferna <daxferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 18:17:07 by daxferna          #+#    #+#             */
-/*   Updated: 2025/02/18 22:21:57 by daxferna         ###   ########.fr       */
+/*   Updated: 2025/02/19 21:00:18 by daxferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,51 +36,52 @@ static bool	map_to_matrix(int fd, t_map *game)
 	return (true);
 }
 
-static bool	is_map_solvable(t_map *game)
+static void	is_map_solvable(t_map *game)
 {
 	int		ce[2];
 	char	**validation_map;
 
-	if (!is_map_rectangular(game))
-		return (false);
-	if (!is_map_closed(game))
-		return (false);
-	if (!has_only_valid_chars(game))
-		return (false);
-	if (!has_exit_and_player(game))
-		return (false);
-	if (!has_collectibles(game))
-		return (false);
+	is_map_rectangular(game);
+	is_map_closed(game);
+	has_only_valid_chars(game);
+	if (!has_exit_and_player(game) || !has_collectibles(game))
+	{
+		free_map(game->map);
+		error(4, game);
+	}
 	validation_map = dup_map(*game);
 	ce[0] = 0;
 	ce[1] = 0;
 	dfs(validation_map, game->pla_x, game->pla_y, ce);
 	free_map(validation_map);
 	if (ce[0] != game->num_collectibles || ce[1] != 1)
-		return (false);
-	return (true);
+	{
+		free_map(game->map);
+		error(9, game);
+	}
 }
 
-bool	is_map_valid(char	*arg, t_map	*game)
+void	is_map_valid(char	*arg, t_map	*game)
 {
 	int		fd;
 
 	fd = open(arg, O_RDONLY);
 	if (fd < 0)
-		return (false);
+		error(1, game);
 	game->height = count_fd_lines(fd);
 	close(fd);
 	if (game->height < 3)
-		return (false);
+		error(5, game);
 	fd = open(arg, O_RDONLY);
 	if (fd < 0)
-		return (false);
+		error(1, game);
 	if (!map_to_matrix(fd, game))
-		return (close(fd), false);
+	{
+		close(fd);
+		error(1, game);
+	}
 	close(fd);
 	if (!game->map)
-		return (false);
-	if (!is_map_solvable(game))
-		return (free_map(game->map), false);
-	return (true);
+		error(1, game);
+	is_map_solvable(game);
 }
