@@ -1,0 +1,6 @@
+*.pdf
+*.out
+.vscode
+*.o
+lib/mlx/build
+so_long
