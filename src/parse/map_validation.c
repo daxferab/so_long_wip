@@ -6,7 +6,7 @@
 /*   By: daxferna <daxferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 18:17:07 by daxferna          #+#    #+#             */
-/*   Updated: 2025/02/19 21:00:18 by daxferna         ###   ########.fr       */
+/*   Updated: 2025/02/26 20:03:33 by daxferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static void	is_map_solvable(t_map *game)
 	if (ce[0] != game->num_collectibles || ce[1] != 1)
 	{
 		free_map(game->map);
-		error(9, game);
+		error(8, game);
 	}
 }
 
@@ -70,8 +70,6 @@ void	is_map_valid(char	*arg, t_map	*game)
 		error(1, game);
 	game->height = count_fd_lines(fd);
 	close(fd);
-	if (game->height < 3)
-		error(5, game);
 	fd = open(arg, O_RDONLY);
 	if (fd < 0)
 		error(1, game);

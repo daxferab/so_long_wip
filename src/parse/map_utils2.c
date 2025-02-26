@@ -6,7 +6,7 @@
 /*   By: daxferna <daxferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 21:17:40 by daxferna          #+#    #+#             */
-/*   Updated: 2025/02/19 20:57:46 by daxferna         ###   ########.fr       */
+/*   Updated: 2025/02/26 20:04:10 by daxferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	is_map_rectangular(t_map *game)
 		if (ft_strlen(game->map[i]) - 1 != game->width)
 		{
 			free_map(game->map);
-			error(6, game);
+			error(5, game);
 		}
 		i++;
 	}
@@ -72,14 +72,14 @@ void	is_map_closed(t_map *game)
 	if (!is_wall(game->map[0]) || !is_wall(game->map[game->height - 1]))
 	{
 		free_map(game->map);
-		error(7, game);
+		error(6, game);
 	}
 	while (game->map[i])
 	{
 		if (game->map[i][0] != WALL || game->map[i][game->width - 1] != WALL)
 		{
 			free_map(game->map);
-			error(7, game);
+			error(6, game);
 		}
 		i++;
 	}

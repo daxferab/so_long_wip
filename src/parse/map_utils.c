@@ -6,7 +6,7 @@
 /*   By: daxferna <daxferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 01:56:15 by daxferna          #+#    #+#             */
-/*   Updated: 2025/02/19 20:57:01 by daxferna         ###   ########.fr       */
+/*   Updated: 2025/02/26 20:03:46 by daxferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ void	has_only_valid_chars(t_map *game)
 			if (!is_valid_char(game->map[row][col]))
 			{
 				free_map(game->map);
-				error(8, game);
+				error(7, game);
 			}
 			col++;
 		}

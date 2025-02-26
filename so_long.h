@@ -6,7 +6,7 @@
 /*   By: daxferna <daxferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 21:39:03 by daxferna          #+#    #+#             */
-/*   Updated: 2025/02/19 20:49:55 by daxferna         ###   ########.fr       */
+/*   Updated: 2025/02/26 20:23:04 by daxferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void		dfs(char **map, int	pos_x, int pos_y, int ce[]);
 bool		is_player(int row, int col, t_map *game);
 bool		is_exit(int row, int col, t_map *game);
 
-// map_validation.c
+// map_is_player_exit.c
 void		is_map_valid(char	*arg, t_map *game);
 
 /*************************** INITIALIZE **************************/
